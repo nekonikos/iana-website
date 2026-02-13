@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Pretty na Masungit na Babyy 👹 💗</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Indie+Flower&family=Patrick+Hand&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --pink: #ffdae0;
+            --dark-pink: #ff9aa2;
+            --blue: #ccedff;
+            --dark-blue: #8ecae6;
+            --white: #ffffff;
+            --text: #5d5d5d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Fredoka', sans-serif;
+            background: linear-gradient(135deg, var(--pink), var(--blue));
+            color: var(--text);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* --- FLOATING BACKGROUND ELEMENTS --- */
+        .heart-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .floating-el {
+            position: absolute;
+            bottom: -10vh;
+            opacity: 0.7; /* Makes them blend into the background */
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* --- NEW: SCRAPBOOK WIGGLING STICKERS --- */
+        .static-sticker {
+            position: absolute;
+            z-index: -1; /* Keeps them behind the text/photos */
+            animation: wiggle 4s ease-in-out infinite alternate;
+            opacity: 0.85;
+        }
+
+        /* Position your stickers around the screen */
+        .sticker-1 { top: 15%; left: 8%; width: 100px; transform: rotate(-15deg); }
+        .sticker-2 { top: 50%; right: 5%; width: 120px; transform: rotate(20deg); }
+        .sticker-3 { bottom: 15%; left: 10%; width: 90px; transform: rotate(-10deg); }
+
+        @keyframes wiggle {
+            0% { transform: translateY(0px) rotate(-5deg) scale(1); }
+            100% { transform: translateY(-15px) rotate(5deg) scale(1.05); }
+        }
+
+        /* --- HERO SECTION --- */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 4rem;
+            color: var(--white);
+            text-shadow: 3px 3px 0px var(--dark-pink);
+            margin-bottom: 10px;
+            animation: bounce 2s infinite;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            font-family: 'Patrick Hand', cursive;
+            background: var(--white);
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            color: var(--dark-blue);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 
+            40% {transform: translateY(-20px);} 
+            60% {transform: translateY(-10px);} 
+        }
+
+        /* --- PHOTO GALLERY (POLAROID STYLE) --- */
+        .gallery-section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--white);
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 0 var(--dark-blue);
+        }
+
+        .gallery-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .polaroid {
+            background: var(--white);
+            padding: 15px 15px 40px 15px;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+            transform: rotate(-2deg);
+            transition: all 0.3s ease;
+            width: 250px;
+            border-radius: 2px;
+        }
+
+        .polaroid:nth-child(even) {
+            transform: rotate(2deg);
+        }
+
+        .polaroid:hover {
+            transform: scale(1.1) rotate(0deg);
+            z-index: 10;
+            box-shadow: 10px 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background-color: #eee;
+            border: 1px solid #ddd;
+        }
+
+        .caption {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.2rem;
+            margin-top: 15px;
+            color: #555;
+        }
+
+        /* --- LOVE LETTER SECTION --- */
+        .letter-section {
+            padding: 60px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .letter-container {
+            background: #fffdf5; 
+            width: 100%;
+            max-width: 600px;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            background-image: radial-gradient(#ddd 1px, transparent 1px);
+            background-size: 20px 20px; 
+        }
+
+        .letter-container:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            width: 150px;
+            height: 40px;
+            background: rgba(255, 183, 178, 0.7); 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .letter-text {
+            font-family: 'Indie Flower', cursive;
+            font-size: 1.4rem;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        /* --- INTERACTIVE SECTION --- */
+        .interactive-section {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .love-btn {
+            background: var(--white);
+            color: var(--dark-pink);
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            font-family: 'Fredoka', sans-serif;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+
+        .love-btn:hover {
+            transform: scale(1.05);
+            background: #fff0f3;
+        }
+
+        /* Modal/Popup */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            animation: popIn 0.3s ease;
+            max-width: 80%;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
+        }
+
+        /* --- MUSIC PLAYER --- */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        .music-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: var(--white);
+            color: var(--dark-blue);
+            font-size: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--white);
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <img src="shark.png" class="static-sticker sticker-1" alt="Heart Sticker">
+    <img src="bleh.png" class="static-sticker sticker-2" alt="Star Sticker">
+    <img src="galit.png" class="static-sticker sticker-3" alt="Flower Sticker">
+
+    <div class="heart-bg" id="heartBg"></div>
+
+    <div class="music-player">
+        <button class="music-btn" id="musicToggle">🎵</button>
+        <audio id="bgMusic" loop>
+            <source src="music.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <header>
+        <h1>For My Pretty na Masungit na Babyy 👹 💗</h1>
+        <div class="subtitle">Happy 1st of many valentines to come Iana!!</div>
+    </header>
+
+    <section class="gallery-section">
+        <h2 class="section-title">Our Memories</h2>
+        <div class="gallery-grid">
+            <div class="polaroid">
+                <img src="first.jpg" alt="Memory 1">
+                <div class="caption">The day we met, film eraa</div>
+            </div>
+            <div class="polaroid">
+                <img src="photobooth.jpg" alt="Memory 2">
+                <div class="caption">Our first photobooth</div>
+            </div>
+            <div class="polaroid">
+                <img src="gooft.jpg" alt="Memory 3">
+                <div class="caption">Silly faces 😜</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="letter-section">
+        <div class="letter-container">
+            <div class="letter-text">
+                <p>Dear Ianaa,</p>
+                <br>
+                <p>
+                    Helloo my gorgeous, beautiful, stunning (wow stunning) Ianaa and happy 1st of many valentines to comeee!!!
+                    I just wanted to make another one of these html websites because I want to make this a milestone back to nung nag confess ako sayo hehe.
+                    If you can remember (which I know you do), I also confessed through this way hehe. But now, I made this website better and much more meaningful as I wanted to connect this thought. 
+                    The thought of how our love quickly bonded and how we got really close to each other. So this “upgraded” website also shows how much I improved over the months of us talking (kasi nga nag improve yung website and yung meaning non is nag improve rin ako because of you hehe, so I make this website as a symbol of that).
+                </p>
+                <br>
+                <p>
+                   I just wanted to say THANK YOU again, promise mo baby na ‘wag tayo mag sawa kaka thank you okiee hehehehe. Thank you for being my VERY VERY FIRST VALENTINEE, just thinking of this thought makes my eyes tear of joyy hehe. It is truly God’s miracle that we would actually make it this far and have this really happy relationship between usss. So yesss, we should also thank the Lord for our love for each other. Hehe, competitive talaga akooo kaya ginawa ko too but matagal na rin kasi ako di nakagawa ng letter hehe. Iloveyousosososomostmuch and moreee. May we enjoy our monday na papalapit andd I love you so muchh okie? Good nightt hehe kasi gabi ko to ginagawa. BYEE BABYY IANAAA!!
+                </p>
+                <br>
+                <p>Forever yours,<br>Nicooo 🐳</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="interactive-section">
+        <button class="love-btn" id="loveBtn">Click if you don't love me 😠</button>
+    </section>
+
+    <div class="modal" id="loveModal">
+        <div class="modal-content">
+            <h2>YOU DON'T LOVE ME ANYMOREEEE </h2>
+            <p>kahit nahahawa nako sayo sa pag sabi ng ganyannn, I STILL LOVE YOUU SUNGITTT 😜</p>
+            <br>
+            <button class="love-btn" onclick="closeModal()">Yay!</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Made by Nicooo 🐳</p>
+    </footer>
+
+    <script>
+        // --- Floating Elements Logic ---
+        function createFloatingElement() {
+            const el = document.createElement('div');
+            el.classList.add('floating-el');
+            
+            // NEW: Array of fun items! You can put emojis, or even HTML image tags here
+            const funThings = [
+                '<span style="color: white;">❤</span>', 
+                '🌸', '✨', '🎀', '💌', '🧸',
+                '<img src="https://cdn-icons-png.flaticon.com/512/833/833472.png" style="width: 25px;">' // Example of a floating picture
+            ];
+            
+            // Pick a random item
+            const randomThing = funThings[Math.floor(Math.random() * funThings.length)];
+            el.innerHTML = randomThing;
+            
+            // Randomize position and size
+            el.style.left = Math.random() * 100 + 'vw';
+            el.style.fontSize = Math.random() * 20 + 15 + 'px';
+            
+            // Randomize animation duration
+            const duration = Math.random() * 3 + 3;
+            el.style.animationDuration = duration + 's';
+            
+            document.getElementById('heartBg').appendChild(el);
+            
+            // Remove element after animation
+            setTimeout(() => {
+                el.remove();
+            }, duration * 1000);
+        }
+
+        setInterval(createFloatingElement, 400);
+
+        // --- Music Toggle Logic ---
+        const musicBtn = document.getElementById('musicToggle');
+        const bgMusic = document.getElementById('bgMusic');
+        let isPlaying = false;
+
+        musicBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicBtn.innerHTML = '🎵';
+            } else {
+                bgMusic.play();
+                musicBtn.innerHTML = '⏸';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // --- Modal Logic ---
+        const loveBtn = document.getElementById('loveBtn');
+        const modal = document.getElementById('loveModal');
+
+        loveBtn.addEventListener('click', () => {
+            modal.style.display = 'flex';
+            // Trigger extra floating elements when clicked!
+            for(let i=0; i<30; i++) {
+                setTimeout(createFloatingElement, i * 50);
+            }
+        });
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        // Close modal if clicking outside
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
